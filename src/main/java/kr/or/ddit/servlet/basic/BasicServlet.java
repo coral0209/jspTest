@@ -56,6 +56,7 @@ public class BasicServlet extends HttpServlet{
 		logger.debug("BasicServlet.doGet() userid parameter : " + req.getParameter("userid"));
 		logger.debug("BasicServlet.doGet() userid parameter : {} {} " ,  req.getParameter("userid"),
 				req.getParameter("password"));
+		//jsp 
 		resp.setContentType("text/html ; charset=utf-8"); //test
 		
 		//printwriter 객체 생성 
