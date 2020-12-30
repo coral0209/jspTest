@@ -92,6 +92,8 @@ public class FactorialTest {
 		/***Then***/ //코드를 실행한 결과와 예상한 값이 일치하는지 검증 
 
 	}
+	
+
 
 	
 	@Test
