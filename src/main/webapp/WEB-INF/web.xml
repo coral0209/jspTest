@@ -40,7 +40,19 @@
 	<url-pattern>/TimesTableServlet</url-pattern>  
   </servlet-mapping>
   
+    <!-- servlet 등록, 해당 서블릿에서 처리할 url 등록 -->
+  <servlet>
+  	<servlet-name>scope</servlet-name>
+  	<servlet-class>kr.or.ddit.servlet.scope.Scope</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
   
+  <!-- servlet에서 처리할 url 매핑을 한다.  -->
+  
+  <servlet-mapping>
+  	<servlet-name>scope</servlet-name>
+	<url-pattern>/scope</url-pattern>  
+  </servlet-mapping>
   
   
 </web-app>

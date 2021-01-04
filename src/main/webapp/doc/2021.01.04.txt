@@ -1,0 +1,140 @@
+웹기반 어플리케이션 - 
+HTTP 프로토콜의 특징
+1. 비연결성 
+	-요청을 보내고 응답을 받게 되면 서버와의 연결은 끊어진다.
+	-서버로 재요청시 서버는 클라이언트가 누구인지 알 수 있도록 session 과 cookie 를 이용한다. 
+2. 웹브라우저는 서버로 요청시 해당 서버(도메인) 에 설정된 쿠키 값을 항상 같이 전송한다. 
+	-서버가 클라이언트가 누구인지 식별할때 사용 
+	-cookie : 브라우저에 저장되는 정보 : 누군지 알기 위한 규약으로 제공하는것.  
+	(쿠키 확인하는 법 개발자도구 -> application -> Storage -> Cookies 
+
+3. java 기반 서버는 요청을 받게 되면 해당 요청의 쿠키 정보중에 
+   JSESSIONID 라는 쿠키가 있는지 확인한다.
+   JSESSIONID 쿠키가 없을 경우
+   서버는 신규 접속 요청이라고 판단, session 을 새롭게 만들고 응답을 생성할 때 
+   session ID(JSESSIONID) 를 응답 헤더에 포함하고
+   해당 응답을 받은 브라우저는 JSESSIONID 쿠키 값을 브라우저에 저장한다. 
+   JSESSIONID 쿠키가 있을 경우 
+   JSESSIONID 에 해당하는 SESSION을 사용(기존 접속한 사용자로 인식) 
+   
+   
+   sessionm 은 사용자 
+   쿠키는 웹브라우저에 저장이 되고, 보안이 취약하다. , delete 키를 통해서 지울수도 있다. 
+   동일한 웹브라우저에서 작업을 했지만 JSESSIONID 가 있고 없고에 따라서 새로운 사용자로 인식한다. 
+   JSESSIONID 를 이름 변경할 수 있다. 
+   
+웹에서 사용자(client) 란? 
+동일한 인물이 아니다. 
+웹에서 사용자란 웹브라우저를 의미한다. 
+시크릿모드 : 다른 유저로 인식을 한다. 
+(탭추가는 제외)
+
+   
+   
+스코프 : 웹 어플리케이션에서 객체(속성) 를 유지/ 공유하는 영역 
+속성 : 클라이언트의 요청을 처리하는 과정에서 servlet/jsp 사이에서 공유하는 정보
+
+웹에서 제공하는 4개의 스코프 
+: 
+page : jsp 페이지 내에서만 공유(유효한)되는 영역(공간)(java의 block 안에 선언된 지역변수)  (비유 : 지역변수 if , for block)
+***request(HttpServletRequest) : 요청이 처리될 때 까지만 유효한공간(java 의 지역변수)  클라이언트의 요청정보가 유지되는 동안 공유되는 영역 ( Dispatch) (요청이 응답이 될떄까지 유효 )  (비유 : page보다 좀 더 넓은 지역변수)
+*session (HttpSession) : 세션이 유효한 동안만 유지되는 공간. 클라이언트의 정보가 유지되는 동안 공유되는 영역 (비유 : 인스턴스 변수)
+application (ServletContext) : 웹 어플리케이션 내에서 공유되는 객체의 영역 딱 1개만 유지되는 공간 (비유 :  java 의 static 변수)
+
+page는 : jsp 페이지 객체 자신 
+
+
+
+request, session, application 은 서버 내부에 있는것. 
+application 은 서버에 딱 1개만 있다. 
+page 는 해당 jsp 에만 유효한 공간 
+
+
+속성 : 요청을 처리하는 과정에서 servlet/jsp 사이에서 공유하는 정보
+scope : 속성을 담을 수 있는 영역, 객체 
+
+scope 객체
+
+
+
+page(pageContext) 
+request (HttpServletRequest) 
+session (HttpSession)
+application(ServletContext)
+
+
+실습 : scope 객체 실습
+
+웹 브라우저로 다음 주소에 접속 localhost/scope(get) 
+해당 요청을 처리해줄 servlet 생성 (kr.or.ddit.servlet.scope.Scope.java)
+get 요청에 대해서는 화면을 webapp/jsp/scope.jsp 로 응답 생성 위임 
+
+scope.jsp 에서는 하나의 input 태그( name-scope) 와 submit 버튼을 생성
+전송 메소드는 post, 전송 주소는 /scope 
+
+Scope.jave 의 dopost 에서는 요청 파라미터 중 scope 파라미터를 확인하여 request, session, application scope 에
+다음과 같이 속성을 저장
+request : 속성명 =request , 속성값 = scope파라미터값 + "_request"
+session : 속성명 =session , 속성값 = scope파라미터값 + "_session"
+application : 속성명 = application, 속성값=scope 파라미터값 + "_application"
+
+속성 설정이 끝나면 webapp/jsp/scopeResult.jsp 로 forward 
+scopeResult.jsp 에서는 Scope servlet 에서 설정한 3개의 속성을
+속성명 : 속성값
+속성명 : 속성값 
+속성명 : 속성값 형식으로 화면에 출력 
+
+
+scope 객체의 속성관련 메소드
+속성 조회 : 스코프객체.getAttribute ("속성명") , 반환타입 : Object 
+			**비교 getParameter("파라미터명") , 반환타입 : String 
+속성 저장 : 스코프객체.setAttribute ("속성명" , "속성값" ), 반환타입 : void
+속성 삭제 : 스코프객체.removeAttribute("속성명") , 반환타입 : void (규약에서는..)
+속성 이름 검색 : 스코프객체.getAttributeNames() , 반환타입 : Enumeration (열거자) (참고 : iterator ) 
+
+
+테스트
+
+
+1] 최초 접속
+1. localhost/scope 접속
+2. input tag 에 sujeong 값 입력 후 전송 버튼 클릭
+3. 결과 화면 확인
+	request : sujeong_request
+	session : sujeong_session
+	application : sujeong_application 
+2] 1] 번과 같은 브라우저를 사용하여 
+	localhost/jsp/scopeResult.jsp 로 바로 접속시 
+	request : null  : request 는 요청이 갈때 사라지게됨 따라서 저장이 되어 있는것이 아니다 
+	session : sujeong_session : 값이 나온다. 
+	application : sujeong_application  	 : 값이 나온다. 
+	
+	
+3] 1] 번과 다른 브라우저를 사용하여(edge 브라우저) : client 는 웹 단위라고 했다.  
+	localhost/jsp/scopeResult.jsp 로 바로 접속시 
+	request : null
+	session : null
+	application : sujeong_application 
+	
+4] 3] 번과 동일한 브라우저를 사용하여 
+	localhost/scope 로 접속
+	input 태그에 sally 값 입력후 전송
+	
+	request : sally_request
+	session : sally_session
+	application : sally_application	
+	
+5] 1]번과 동일한 브라우저를 사용하여 (크롬브라우저)
+	localhost/jsp/scopeResult.jsp 로 접속
+	request : null
+	session : sujeong_session
+	application : sally_application (static 인데 가장 마지막에 sally 가 나왔으니까 sujeong 이 아니라  sally 로 저장되어 있다. )
+
+
+
+실습 2 . 
+localhost/[context_path]/sumCalculation 
+
+get(화면 요청)
+
+		
