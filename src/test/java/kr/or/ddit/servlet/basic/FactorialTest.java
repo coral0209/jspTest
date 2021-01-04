@@ -13,7 +13,7 @@ public class FactorialTest {
 //BDD : Behavior Driven Development 
 
 	
-	/* @Test : 텍스트 메소드에 붙이는 어노테이션 
+	/* @Test : 테스트 메소드에 붙이는 어노테이션 
 			해딩 어노테이션을 붙이지 않으면 테스트 메소드로 인식되지 않음(테스트 대상에서 제외 ) 
 			제한사항 : 
 			1. 메소드 시그니처를 정해진대로 구성해야함
