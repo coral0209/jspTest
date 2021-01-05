@@ -13,10 +13,10 @@
     <meta name="author" content="">
    
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Signin Template for Bootstrap **</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
+	<%@ include file="/common/common_lib.jsp" %>
 
     <!-- Custom styles for this template -->
     <link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
@@ -24,8 +24,6 @@
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
   </head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
   <body>
 
     <div class="container">
@@ -50,6 +48,8 @@
       </form>
 
     </div> <!-- /container -->
+
+<!-- 에러 부분만들기 -->
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

@@ -2,6 +2,7 @@ package kr.or.ddit.servlet.scope;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,10 +13,17 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@WebServlet("/sumcalculation")
-public class sumCalculation extends HttpServlet {
+@WebServlet("/mulcalculation")
+public class mulCalculation extends HttpServlet {
 	
 	private static final Logger logger = LoggerFactory.getLogger(sumCalculation.class);
+	
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//두가지 : forward, redirect(요청 2번 발생)
+		req.getRequestDispatcher("/jsp/mulcal.jsp").forward(req, resp);
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,28 +31,16 @@ public class sumCalculation extends HttpServlet {
 		int end = Integer.parseInt(req.getParameter("end")); 
 		int result = 0; 
 		
+		result = start * end ; 
 		
-		for(int i = start ; i <= end ; i++) {
-			result += i; 
-		}
-		
-		
-		logger.info("{}" , result);
+		logger.info("결과값 " + result);
 
-		// f3 누르면 메소드를 누른다. 
-		// 
 		
 		HttpSession session = req.getSession();  
-		session.setAttribute("sumResult", result );
+		session.setAttribute("mulResult", result );
 		
-		req.getRequestDispatcher("/jsp/sumResult.jsp").forward(req, resp);		
+		req.getRequestDispatcher("/jsp/mulResult.jsp").forward(req, resp);
 	
 	}
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		req.getRequestDispatcher("/jsp/sumcal.jsp").forward(req, resp);
-	
-	}
 }

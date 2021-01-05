@@ -1,0 +1,103 @@
+서버 프로그램 구현 기술
+흐름제어와 페이지 모듈화
+jsp -> jsp 로 보낼 수 있다. <% %> 코드안에서 하면 되지만. 
+자바 코드를 사용을 하지 않기 떄문에
+<jsp.forward path="PATH"/> (서블렛은 사용할 수 없고 jsp에서만 사용한다. )
+-> 로직(자바코드등) 이 들어가야 하는 부분은 jsp 가 아니다 servlet 등이다. jsp 는 view 의 역활이기 때문에
+코드를 짜는 역할을 넣어놓는걸 피한다. 
+
+include (동적/정적)-> 언제 include를 하냐의 차이  
+페이지를 모듈화해서 작업 
+화면을 제어하는 프레임워크(다른 라이브러리) 추천 
+(사진 정리하기) 
+
+서버 프로그램 구현 기술
+
+에러처리 
+각 jsp 페이지별 에러 페이지 지정 
+응답 상태 코드별/ 예외 타입별로 에러 페이지를 지정할 수 있다.
+에러 페이지 작성
+에러 페이지 우선순위 
+
+에러처리 페이지 설정/작성 
+
+500에러는 : 서버에러(개발자잘못...) 
+
+예외처리방법
+
+jsp 지시자  <%@ page errorPage="error.jsp" %> -> 잘 쓰지 않음
+예외타입별 설정 : web.xml 
+응답 상태 코드별 설정 : web.xml 
+
+
+페이지 모듈화
+
+1. 동적 include
+	RequestDispatcher.include() 
+2. 정적 include 
+	<%@ include file=""/>
+	컴파일 시점 
+	
+
+
+에러페이지 
+1. jsp 페이지별로 errorPage 속성에 에러 발생시 이동할 jsp 파일 기술 (x) 
+2. 에러코드(상태코드) 별 예외 페이지 설정
+	web.xml 404, 500 
+3. 예외 타입별 예외 페이지 설정 
+	1) ArithmeticException 이 발생되는 jsp 파일을 하나 생성한다. webapp/jsp/ari.jsp 
+	2) ArithmeticException이 발생되었을 때 응답을 대신 생성해줄 webapp/error/type/ariError.jsp 를 생성한다. 
+	3) web.xml 에 예외 타입별 에러 페이지 설정
+	4) 서버 재시작 
+	5) localhost/jsp/ari.jsp 로 접속해서 arithmeticException 발생하게끔 유도 하여 
+	   설정한 에러페이지로 이동되는지 확인 
+	
+탐구과제 목적 : 상속관계  
+1. webapp/error/type/runError.jsp 를 생성(텍스트는 본인 편한대로)
+2. RuntimeException 에러가 발생할 수 있는 jsp 페이지 생성
+   webapp/jsp/run.jsp
+3. web.xml 에 runtimeException 예외에 대해 runError.jsp 페이지가 응답을 생성하도록 설정
+4. localhost/jsp/run.jsp 로 접속 
+5. *** 어떤 에러 페이지가 나오는지 확인
+6. *** localhost/jsp/ari.jsp 접속 시 어떤 에러 페이지로 이동하는지 확인 	
+-> arithmeticException에서 응답이 옴 ( 구체적인 에러가 xml 에 설정되어 있어서 부모꺼를 따라갈 필요가 없다) 
+7. arithmeticException, runtimeException 이 발생한 것은 서버 에러로 볼 수 있는데 
+	500.html(jsp) 에러페이지에서 응답이 생성되지 않았는데 
+	<error-page> 엘레먼트를 기술한 순서가 응답에 영향을 미치는지 확인 
+	==>error-page 엘레먼트 기술 순서가 영향을 미치지 않음
+	예외 타입 에러페이지 설정이 에러코드 에러페이지 설정보다 우선시된다. 
+
+
+
+cookie 
+보완에 취약
+임의로 조작이 가능
+저장위치 : 브라우저(클라이언트) 
+2군데서 제어가능 : 웹브라우저에 저장되어있기 떄문에 javascript 코드, 
+사용방법 2가지 : client side : document.cookie server side_(사진참고) 
+
+
+
+session 
+저장위치 : was 
+
+servlet 이나 jsp 에서 제어
+
+기능 
+해당 서비스에서 제공하는 기능
+ex : 게시판 게시글 작성하기 
+사용자 로그인하기
+
+비기능 : 기능을 구현하기 위해서 부수적으로 필요한 것 
+ex : 게시판 게시글 작성하기 ==> 웹 에디터 
+	트랜잭션 제어하는것 
+	비기능이 -> 기술적 난이도가 더 높다. 
+	=> 반복이 되는 경우가 많다. => 프레임워크를 통해 비기능을 사용하기 쉽게 만들어 놓았다. 
+	
+	
+	
+cookie 확인하기 : 
+	1. 개발자 도구
+	2. script 이용 : document 객체에서 document.cookie -> 쿠키구성 : 쿠키이름=쿠키값; 쿠키이름2=쿠키값2; 쿠키이름3=쿠키값3
+특정 쿠키의 값을 확인하려면? 
+userid = brown; rememberme = Y; test = t; 

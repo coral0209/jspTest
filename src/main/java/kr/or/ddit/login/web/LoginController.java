@@ -107,11 +107,11 @@ public class LoginController extends HttpServlet {
 		
 		//로그인 성공 (forward 는 같은 곳에서 실행되서 contextPath() 를 붙일 필요가 없다. )
 		if(userid.equals("brown") && pass.equals("pass")) {
-			req.getRequestDispatcher("/main.jsp").forward(req, resp);
+			req.getRequestDispatcher("/jsp/main.jsp").forward(req, resp);
 		}
 		//로그인 실패 
 		else {
-			resp.sendRedirect(req.getContextPath() + "/login.jsp");
+			resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
 		}
 		
 		

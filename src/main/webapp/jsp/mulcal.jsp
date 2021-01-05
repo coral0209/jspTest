@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-sumResult : <%=session.getAttribute("sumResult") %>
+<form method="post" action="/mulcalculation">
+
+시작값 :	<input type="text" name="start"> 
++
+끝값 : 	<input type="text" name="end">
+	<input type="submit" value="전송버튼"> 
+</form>
 </body>
 </html>

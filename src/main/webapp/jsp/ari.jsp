@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-sumResult : <%=session.getAttribute("sumResult") %>
+	<% int a = 5;
+	   int b = 0;
+	   int c = a / b ; 
+	%>
 </body>
 </html>

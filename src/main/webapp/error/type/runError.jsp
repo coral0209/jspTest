@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-sumResult : <%=session.getAttribute("sumResult") %>
+에러가 발생하였습니다 runtime error
 </body>
 </html>
