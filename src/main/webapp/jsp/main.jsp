@@ -13,6 +13,7 @@
 <title>Jsp</title>
 
 <%@ include file="/common/common_lib.jsp"%>
+
 <script src="/js/jquery/jquery-1.12.4.js"></script>
 
 <!-- Bootstrap core CSS -->

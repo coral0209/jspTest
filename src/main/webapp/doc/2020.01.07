@@ -1,3 +1,11 @@
 cookie 는 클라이언트(javascript ) 에서 조작이 가능하지만
 서버에서도 ( HttpServletRequest - 요청 시 같이 전송된 쿠키 정보 조회 
 HttpServletResponse - 응답시 클라이언트에게 쿠키 정보 추가 ) 조작이 가능하다. 
+
+sm.queryForObject("" , memId); 
+
+우리 프로젝트로 한거는 싱글톤 패턴이 아님 
+싱글톤 : 특정클래스객체를 1나만 만드는데 
+싱크로나이즈가 되어 있지 않으면 정확히 싱글톤이 아님
+-> 대체 -> static block , 싱크로나이즈 두가지중 한개를 선택해야한다. 
+
