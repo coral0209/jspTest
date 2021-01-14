@@ -53,7 +53,7 @@
 					<th>사용자 별명</th>
 					<th>등록일시</th>
 				</tr>
-			<%List<UserVo> pageList = (List<UserVo>)request.getAttribute("list");
+			<%List<UserVo> pageList = (List<UserVo>)request.getAttribute("allList");
 					 
 					for (int i = 0; i < pageList.size(); i++) {
 					//향상된 for 문도 가능 

@@ -20,7 +20,7 @@ public class EmpServiceTest {
 		/***When***/
 		List<EmpVo> listVo = service.selectAllUser();
 		/***Then***/
-		assertEquals(19, listVo.size());
+		assertEquals(15, listVo.size());
 	}
 	@Test
 	public void selectUser() {

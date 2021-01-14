@@ -1,0 +1,123 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%@page import="kr.or.ddit.user.model.UserVo"%>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+<!-- Custom styles for this template -->
+<link href="<%=request.getContextPath()%>/css/dashboard.css"
+	rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+</head>
+
+<body>
+
+<% UserVo vo = (UserVo) request.getAttribute("user");%>
+	
+	
+	<%--헤더부분 --%>
+	<%@ include file="/common/header.jsp"%>
+	<div class="row">
+
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<%--left 부분 --%>
+				<%@ include file="/common/left.jsp"%>
+			</ul>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+	
+			<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModify">
+				<input type="hidden" name="userid" value="<%=vo.getUserid()%>"/>
+				<div class="form-group">
+					<label for="userNm" class="col-sm-2 control-label">id</label>
+					<div class="col-sm-10">
+						<label class="control-label"><%=vo.getUserid() %></label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="userNm" class="col-sm-2 control-label">name</label>
+					<div class="col-sm-10">
+						<%=vo.getUsernm() %>
+						
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="userNm" class="col-sm-2 control-label">alias</label>
+					<div class="col-sm-10">
+						<%=vo.getAlias() %>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="pass" class="col-sm-2 control-label">Password</label>
+					<div class="col-sm-10">
+						<% String pass = vo.getPass();
+						   for (int i = 0 ; i < pass.length(); i++) {
+						   out.print("*");%>
+						<%} %>
+						
+					</div>
+				</div>
+
+
+				
+								<div class="form-group">
+					<label for="userNm" class="col-sm-2 control-label">addr1</label>
+					<div class="col-sm-10">
+						<%=vo.getAddr1() %>
+					</div>
+				</div>
+				
+								<div class="form-group">
+					<label for="userNm" class="col-sm-2 control-label">addr2</label>
+					<div class="col-sm-10">
+						<%=vo.getAddr2() %>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="userNm" class="col-sm-2 control-label">zipcode</label>
+					<div class="col-sm-10">
+						<%=vo.getZipcode() %>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="userNm" class="col-sm-2 control-label">filename</label>
+					<div class="col-sm-10">
+						<%=vo.getFilename() %>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="userNm" class="col-sm-2 control-label">realfilename</label>
+					<div class="col-sm-10">
+						<%=vo.getRealfilename() %>
+					</div>
+				</div>
+				
+									
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default">사용자수정</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

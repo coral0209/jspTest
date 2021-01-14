@@ -31,5 +31,28 @@
 		SELECT COUNT(*)
 		FROM users
 	</select>
+	
+	
+	<update id="modifyUser" parameterType="userVo">
+		UPDATE users  Set  usernm = #{usernm} , 
+						   pass = #{pass} , 
+						   reg_dt = #{reg_dt} , 
+						   alias = #{alias} , 
+						   addr1 = #{addr1} , 
+						   addr2 = #{addr2} , 
+						   zipcode = #{zipcode}  
+		WHERE userid = #{userid} 
+	
+	</update>
+	
+	<insert id="insertUser" parameterType="userVo" >
+		insert into users(userid , usernm , pass , reg_dt , alias , addr1 , addr2 , zipcode   ) values (#{userid} , #{usernm} , #{pass} , #{reg_dt} 
+, #{alias} , #{addr1} , #{addr2} ,  #{zipcode}   )
+	</insert>
+	
+	<select id="checkId" parameterType="String" resultType="int">
+		select count(*) from users where userid = #{data}
+	
+	</select>
 </mapper>
 

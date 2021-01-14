@@ -19,7 +19,7 @@ public class EmpDaoTest {
 		/***When***/
 		List<EmpVo> listVo = dao.selectAllUser();
 		/***Then***/
-		assertEquals(19, listVo.size());
+		assertEquals(15, listVo.size());
 	}
 	@Test
 	public void selectUser() {

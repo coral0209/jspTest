@@ -25,7 +25,7 @@ public class PagingUser extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		req.setCharacterEncoding("utf-8");
 		
 		
 		//request 객체에서 제공하는 파라미터 변수 : 
@@ -33,21 +33,11 @@ public class PagingUser extends HttpServlet {
 		//doGet 메소드에서 page, pageSize 파라미터가 request 객체에 존재하지 않을 떄 
 		//page 는 1로 pageSize 는 5로 생각을 코드를 작성
 		//파라미터가 존재하면 해당 파라미터 이용
-		
-		
-		
-		
-		req.setCharacterEncoding("utf-8");
-		
-		
 		// 3항 연산자를 통한 page 와 pagesize 파타미터에 대한 조건 
 //		String pageParam = req.getParameter("page");
 //		int page = pageParam == null ? 1 : Integer.parseInt(pageParam) ; 
 //		String pageSizeParam = req.getParameter("pagesize");
 //		int pageSize = pageSizeParam == null ?  5 : Integer.parseInt(pageSizeParam) ; 
-		
-		
-
 		
 		
 		//if 연산자를 통한 page 와 pagesize 파타미터에 대한 조건
@@ -74,14 +64,16 @@ public class PagingUser extends HttpServlet {
 		//페이징 처리된 페이지의 회원들만 조회 
 		List<UserVo> userList = (List<UserVo>) map.get("userList");
 		//총 회원 수 
-		int pagnation = (int) map.get("cnt"); 
-		
+		int userCnt = (int) map.get("cnt"); 
+		int pagination = (int)Math.ceil((double)userCnt/pageSize);
 		
 		  
 		req.setAttribute("list", userList);
 		//총 회원 수 
-		req.setAttribute("pagnation", pagnation);
-		req.getRequestDispatcher("/user/allUser.jsp").forward(req, resp);
+		req.setAttribute("pagination", pagination);
+		logger.debug("pagenation {}"  );
+		req.setAttribute("pageVo", vo);
+		req.getRequestDispatcher("/user/pagingUser.jsp").forward(req, resp);
 		
 	}
 

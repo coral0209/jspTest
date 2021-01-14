@@ -2,6 +2,7 @@ package kr.or.ddit.user.repository;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -69,6 +70,7 @@ public class UserServiceTest {
 		/***When***/
 		Map<String, Object> map = userService.selectPagingUser(vo); 
 		List<UserVo> userList = (List<UserVo>) map.get("userList");
+		int userCnt = (int)map.get("cnt");
 		/***Then***/
 		assertNotNull(map);
 		assertEquals("cony" , userList.get(0).getUserid());
@@ -88,6 +90,22 @@ public class UserServiceTest {
 		assertNull(user);
 		
 		
+	}
+	
+	@Test
+	public void modifyUserTest() {
+		/***Given***/
+		UserServiceI userService = new UserService();
+
+		UserVo userVo = new UserVo( "ddit" , "오로라" , "aurora" , new Date() , "사파이어" , "판교동 판교로 판교서" , "아이슬란드 눈밭" , "394-423" ); 
+
+		
+		/***When***/
+
+		int cnt = userService.modifyUser(userVo);
+		/***Then***/
+		assertEquals(1, cnt);
+
 	}
 	
 	
