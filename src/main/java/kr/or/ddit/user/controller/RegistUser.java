@@ -40,7 +40,7 @@ public class RegistUser extends HttpServlet {
 
 			String usernm = req.getParameter("userNm");
 			String pass = req.getParameter("pass");
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date reg_dt = null;
 			try {
 				reg_dt = sdf.parse(req.getParameter("reg_dt"));

@@ -11,7 +11,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- Bootstrap core CSS -->
@@ -20,13 +21,32 @@
 <link href="<%=request.getContextPath()%>/css/dashboard.css"
 	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<script>
+//문서 로딩이 완료 됬을 떄 
+$(function(){
+
+	$('#modifyBtn').on('click' , function(){
+		$("#frm").attr("method" , "get"); 
+		$("#frm").attr("action" , "<%=request.getContextPath()%>/userModify" );
+		$("#frm").submit();
+	})
+	$('#deleteBtn').on('click' , function(){
+		$("#frm").attr("method" , "post"); 
+		$("#frm").attr("action" , "<%=request.getContextPath()%>
+	/deleteUser");
+					$("#frm").submit();
+				})
+	})
+</script>
 </head>
 
 <body>
 
-<% UserVo vo = (UserVo) request.getAttribute("user");%>
-	
-	
+	<%
+	UserVo vo = (UserVo) request.getAttribute("user");
+	%>
+
+
 	<%--헤더부분 --%>
 	<%@ include file="/common/header.jsp"%>
 	<div class="row">
@@ -39,81 +59,99 @@
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-	
-			<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModify">
-				<input type="hidden" name="userid" value="<%=vo.getUserid()%>"/>
+
+			<form class="form-horizontal" id="frm" role="form"
+				action="<%=request.getContextPath()%>/userModify">
+				<input type="hidden" name="userid" value="<%=vo.getUserid()%>">
+				
+				<div class="form-group">
+					<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
+					<div class="col-sm-10">
+					<img src="<%=request.getContextPath()%>/profile/<%=vo.getUserid()%>.png"/>
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">id</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%=vo.getUserid() %></label>
+						<label class="control-label"><%=vo.getUserid()%></label>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">name</label>
 					<div class="col-sm-10">
-						<%=vo.getUsernm() %>
-						
+						<%=vo.getUsernm()%>
+
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">alias</label>
 					<div class="col-sm-10">
-						<%=vo.getAlias() %>
+						<%=vo.getAllias()%>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="pass" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-10">
-						<% String pass = vo.getPass();
-						   for (int i = 0 ; i < pass.length(); i++) {
-						   out.print("*");%>
-						<%} %>
-						
+						<%
+						String pass = vo.getPass();
+						for (int i = 0; i < pass.length(); i++) {
+							out.print("*");
+						%>
+						<%
+						}
+						%>
+
 					</div>
 				</div>
 
 
-				
-								<div class="form-group">
+
+				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">addr1</label>
 					<div class="col-sm-10">
-						<%=vo.getAddr1() %>
+						<%=vo.getAddr1()%>
 					</div>
 				</div>
-				
-								<div class="form-group">
+
+				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">addr2</label>
 					<div class="col-sm-10">
-						<%=vo.getAddr2() %>
+						<%=vo.getAddr2()%>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">zipcode</label>
 					<div class="col-sm-10">
-						<%=vo.getZipcode() %>
+						<%=vo.getZipcode()%>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">filename</label>
 					<div class="col-sm-10">
-						<%=vo.getFilename() %>
+						<%=vo.getFilename()%>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">realfilename</label>
 					<div class="col-sm-10">
-						<%=vo.getRealfilename() %>
+						<%=vo.getRealfilename()%>
 					</div>
 				</div>
-				
-									
+
+
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-default">사용자수정</button>
+
+						<!-- 사용자 수정 일때 method: get(화면만 띄어줄것임) , action="<%=request.getContextPath()%>/userModify" 
+						사용자 삭제 : method : post (db에 변화가생김) action = /deleteUser 
+						파라미터는 둘다 userid 하나만 있으면 가능   -->
+						<button type="button" id="modifyBtn" class="btn btn-default">사용자수정</button>
+						<button type="button" id="deleteBtn" class="btn btn-default">사용자삭제</button>
 					</div>
 				</div>
 			</form>

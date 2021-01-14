@@ -10,6 +10,9 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
+<!-- 달력 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="icon" href="../../favicon.ico">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
@@ -21,9 +24,15 @@
 	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+<!-- 달력 -->
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     //load함수를 이용하여 core스크립트의 로딩이 완료된 후, 우편번호 서비스를 실행합니다.
   $(function(){
+	  $( "#datepicker" ).datepicker();
 	  $("#addrBtn").on("click" , function(){
 	    daum.postcode.load(function(){
 	        new daum.Postcode({
@@ -41,24 +50,30 @@
 	        }).open();
 	    });
 	  })
-	  
-	  
+
 	  
    });
+ 
  </script>
  <script>
- $(function(){
-  
-	})
+ 
 function send(){
- 		if ($('#userId').val() == "" ){
+		if ($('#chkMsg').val() == "사용불가능" ){
+			alert("아이디가 중복됩니다. 다른 아이디로 입력해주세요")
+			return false;
+		} 	 
+ 		if ($('#userId').val() == "" || $('#userNm').val() == "" ||  $('#useralias').val() == ""  || $('#pass').val() == ""  || $('#datepicker').val() == ""  ||
+		$('#addr1').val() == "" || $('#addr2').val() == "" || $('#zipcode').val() == ""  ){
+		alert("모든항목을 빠짐없이 입력해주세요")	
+			return false; 
+		}
+ 
+ 		/* 	
+ 		
+		if ($('#userId').val() == "")
 			alert("아이디를 입력해주세요")
 			return false;
 		}
-		if ($('#chkMsg').value() == "사용불가능" ){
-			alert("아이디가 중복됩니다. 다른 아이디로 입력해주세요")
-			return false;
-		} 		
 		if ($('#userNm').val() == ""  ){
 			alert("이름 입력해주세요")
 			return false;
@@ -71,7 +86,7 @@ function send(){
 			alert("비밀번호를 입력해주세요")
 			return false;
 		}
-		if ($('#reg_dt').val() == ""  ){
+		if ($('#datepicker').val() == ""  ){
 			alert("날짜를 입력해 주세요")
 			return false;
 		}
@@ -86,7 +101,7 @@ function send(){
 		if ($('#zipcode').val() == ""  ){
 			alert("주소찾기 버튼을 눌러주세요")
 			return false;
-		}  
+		}   */
 
 		$('#fm').submit();
 		
@@ -108,7 +123,7 @@ function send(){
 				}
 				else {
 					$('#chkMsg').html("사용불가능"); 
-					$('#chkMsg').val("사용가능")
+					$('#chkMsg').val("사용불가능")
 				}
 				
 			}, 
@@ -185,12 +200,13 @@ function send(){
 				</div>
 				
 								<div class="form-group">
-					<label for="reg_dt" class="col-sm-2 control-label">등록 날짜</label>
+					<label for="datepicker" class="col-sm-2 control-label">등록 날짜</label>
 					<div class="col-sm-10">
 					<%String reg_dt = request.getParameter("reg_dt"); %>
 					<%  reg_dt = reg_dt == null ? "" : reg_dt;   %>
-					<input type="text" class="form-control" id="reg_dt" name="reg_dt" value="<%=reg_dt%>"
-					placeholder="yyyy.mm.dd">						
+					<%-- <input type="text" class="form-control" id="reg_dt" name="reg_dt" value="<%=reg_dt%>"
+					placeholder="yyyy.mm.dd">	 --%>
+					<input type="text" class="form-control" name="reg_dt" value="<%=reg_dt%>" id="datepicker"/>				
 					</div>
 				</div>
 

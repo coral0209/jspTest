@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import kr.or.ddit.common.model.PageVo;
@@ -15,8 +17,14 @@ import kr.or.ddit.user.service.UserServiceI;
 
 public class UserServiceTest {
 
+	UserServiceI userService;
 	
-	
+	@Before
+	public void setup() {
+		userService = new UserService();
+		UserVo userVo = new UserVo("testUser" , "테스트 사용자" , "testUserPass" , new Date(), "대덕" , "대전 중구 중앙로 76"  , "4층" , "2323"); 
+		userService.insertUser(userVo); 
+	}
 	
 	// service 를 테스트 코드
 	
@@ -24,13 +32,12 @@ public class UserServiceTest {
 	@Test
 	public void SelectAllUserTest() {
 		/***Given***/
-		UserServiceI userService = new UserService(); 
 
 		/***When***/
 		List<UserVo> userList = userService.selectAllUser(); 
 		
 		/***Then***/
-		assertEquals(16, userList.size());
+		assertEquals(21, userList.size());
 		
 		
 	
@@ -41,7 +48,6 @@ public class UserServiceTest {
 	@Test
 	public void selectUserTest() {
 		/***Given***/
-		UserServiceI userService = new UserService(); 
 		String userid = "brown"; 
 		/***When***/
 		UserVo user = userService.selectUser(userid);
@@ -61,7 +67,6 @@ public class UserServiceTest {
 	@Test
 	public void selectPageingUser() {
 		/***Given***/
-		UserServiceI userService = new UserService(); 
 		PageVo vo = new PageVo();  
 		vo.setPage(2);
 		vo.setPagesize(5);
@@ -73,7 +78,7 @@ public class UserServiceTest {
 		int userCnt = (int)map.get("cnt");
 		/***Then***/
 		assertNotNull(map);
-		assertEquals("cony" , userList.get(0).getUserid());
+		assertEquals( 5 , userList.size());
 	
 		
 	}
@@ -82,7 +87,6 @@ public class UserServiceTest {
 	@Test
 	public void selectUser() {
 		/***Given***/
-		UserServiceI userService = new UserService(); 
 		String userid = "sdfsdfd"; 
 		/***When***/
 		UserVo user = userService.selectUser(userid);
@@ -95,7 +99,6 @@ public class UserServiceTest {
 	@Test
 	public void modifyUserTest() {
 		/***Given***/
-		UserServiceI userService = new UserService();
 
 		UserVo userVo = new UserVo( "ddit" , "오로라" , "aurora" , new Date() , "사파이어" , "판교동 판교로 판교서" , "아이슬란드 눈밭" , "394-423" ); 
 
@@ -108,6 +111,26 @@ public class UserServiceTest {
 
 	}
 	
+	@Test
+	public void deleteUserTest() {
+		/***Given***/
+
+		String userId = "testUser"; 
+		
+		/***When***/
+
+		int cnt = userService.deleteUser(userId);
+		/***Then***/
+		assertEquals(1, cnt);
+
+	}
+	
+
+	
+	@After 
+	public void tearDown(){
+		userService.deleteUser("testUser"); 
+	}
 	
 	
 	

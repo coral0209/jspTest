@@ -60,4 +60,9 @@ public class UserService implements UserServiceI {
 		return dao.checkId(userid);
 	}
 
+	@Override
+	public int deleteUser(String userid) {
+		return dao.deleteUser(userid);
+	}
+
 }

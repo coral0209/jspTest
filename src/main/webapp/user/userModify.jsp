@@ -80,7 +80,7 @@
 					<label for="userNm" class="col-sm-2 control-label">name</label>
 					<div class="col-sm-10">
 					<input type="text" class="form-control" id="userNm" name="userNm"
-								placeholder="<%=vo.getUsernm() %>">
+								value="<%=vo.getUsernm() %>" >
 						
 						
 					</div>
@@ -89,7 +89,7 @@
 					<label for="userNm" class="col-sm-2 control-label">alias</label>
 					<div class="col-sm-10">
 					<input type="text" class="form-control" id="useralias" name="userAlias"
-								placeholder="<%=vo.getAllias() %>">
+								value="<%=vo.getAllias() %>">
 						
 					</div>
 				</div>
@@ -105,7 +105,7 @@
 					<label for="reg_dt" class="col-sm-2 control-label">reg_dt</label>
 					<div class="col-sm-10">
 					<input type="text" class="form-control" id="reg_dt" name="reg_dt"
-					placeholder="yyyy.mm.dd">						
+					value="yyyy.mm.dd">						
 					</div>
 				</div>
 
@@ -115,7 +115,7 @@
 					<label for="userNm" class="col-sm-2 control-label">addr1</label>
 					<div class="col-sm-8">
 					<input type="text" class="form-control" id="addr1" name="addr1" readonly
-					placeholder="<%=vo.getAddr1() %>">		
+					value="<%=vo.getAddr1() %>">		
 					</div>
 					<div class="col-sm-2">
 					<button type="button" id="addrBtn" class="btn btn-default">주소검색</button>				
@@ -126,7 +126,7 @@
 					<label for="userNm" class="col-sm-2 control-label">addr2</label>
 					<div class="col-sm-10">
 					<input type="text" class="form-control" id="addr2" name="addr2"
-					placeholder="상세주소">		
+					value="상세주소">		
 						
 					</div>
 				</div>
@@ -135,7 +135,7 @@
 					<label for="userNm" class="col-sm-2 control-label">zipcode</label>
 					<div class="col-sm-10">
 					<input type="text" class="form-control" id="zipcode" name="zipcode" readonly
-					placeholder="<%=vo.getZipcode() %>">	
+					value="<%=vo.getZipcode() %>">	
 					</div>
 				</div>
 			

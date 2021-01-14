@@ -34,5 +34,7 @@ public interface UserDaoI {
 	//중복검사
 	int checkId(String userid );
 	
+	//유저 삭제
+	int deleteUser(String userid); 
 	
 }
