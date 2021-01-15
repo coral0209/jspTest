@@ -24,6 +24,7 @@ public class UserServiceTest {
 		userService = new UserService();
 		UserVo userVo = new UserVo("testUser" , "테스트 사용자" , "testUserPass" , new Date(), "대덕" , "대전 중구 중앙로 76"  , "4층" , "2323"); 
 		userService.insertUser(userVo); 
+		userService.deleteUser("ddit"); 
 	}
 	
 	// service 를 테스트 코드

@@ -25,7 +25,7 @@
 <link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 <!-- 달력 -->
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
 <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -119,11 +119,11 @@ function send(){
 			success : function(data){
 				if (data.sw == 1){
 					$('#chkMsg').html("사용가능")
-					$('#chkMsg').val("사용가능"); 
+				
 				}
 				else {
 					$('#chkMsg').html("사용불가능"); 
-					$('#chkMsg').val("사용불가능")
+				
 				}
 				
 			}, 

@@ -21,9 +21,15 @@
 	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+<!-- 달력 -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     //load함수를 이용하여 core스크립트의 로딩이 완료된 후, 우편번호 서비스를 실행합니다.
   $(function(){
+	  $( "#datepicker" ).datepicker();
 	  $("#addrBtn").on("click" , function(){
 	    daum.postcode.load(function(){
 	        new daum.Postcode({
@@ -101,15 +107,24 @@
 					</div>
 				</div>
 				
-								<div class="form-group">
+	<!-- 							<div class="form-group">
 					<label for="reg_dt" class="col-sm-2 control-label">reg_dt</label>
 					<div class="col-sm-10">
 					<input type="text" class="form-control" id="reg_dt" name="reg_dt"
 					value="yyyy.mm.dd">						
 					</div>
+				</div> -->
+
+
+
+				<div class="form-group">
+					<label for="datepicker" class="col-sm-2 control-label">등록 날짜</label>
+					<div class="col-sm-10">
+					<%-- <input type="text" class="form-control" id="reg_dt" name="reg_dt" value="<%=reg_dt%>"
+					placeholder="yyyy.mm.dd">	 --%>
+					<input type="text" class="form-control" name="reg_dt" value="yyyy.mm.dd" id="datepicker"/>				
+					</div>
 				</div>
-
-
 				
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">addr1</label>

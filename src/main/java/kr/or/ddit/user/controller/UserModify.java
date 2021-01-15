@@ -39,7 +39,7 @@ public class UserModify extends HttpServlet {
 		String userid = req.getParameter("userid");
 		String usernm = req.getParameter("userNm");
 		String pass = req.getParameter("pass"); 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date reg_dt = null; 
 		
 		try {
