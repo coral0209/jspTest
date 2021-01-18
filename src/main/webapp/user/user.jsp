@@ -13,26 +13,26 @@
 <link rel="icon" href="../../favicon.ico">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- Bootstrap core CSS -->
-<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${pageContext.request.contextPath}/css/dashboard.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 <script>
 //문서 로딩이 완료 됬을 떄 
 $(function(){
 
 	$('#modifyBtn').on('click' , function(){
 		$("#frm").attr("method" , "get"); 
-		$("#frm").attr("action" , "<%=request.getContextPath()%>/userModify" );
+		$("#frm").attr("action" , "${pageContext.request.contextPath}/userModify" );
 		$("#frm").submit();
 	})
 	$('#deleteBtn').on('click' , function(){
 		$("#frm").attr("method" , "post"); 
-		$("#frm").attr("action" , "<%=request.getContextPath()%>/deleteUser" );
+		$("#frm").attr("action" , "${pageContext.request.contextPath}/deleteUser" );
 					$("#frm").submit();
 				})
 	})
@@ -60,13 +60,13 @@ $(function(){
 
 
 			<form class="form-horizontal" id="frm" role="form"
-				action="<%=request.getContextPath()%>/userModify">
+				action="${pageContext.request.contextPath}/userModify">
 				<input type="hidden" name="userid" value="<%=vo.getUserid()%>">
 				
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 					<div class="col-sm-10">
-					<img src="<%=request.getContextPath()%>/profile/<%=vo.getUserid()%>.png"/>
+					<img src="${pageContext.request.contextPath}/profile/<%=vo.getUserid()%>.png"/>
 					</div>
 				</div>
 				
@@ -146,7 +146,7 @@ $(function(){
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 
-						<!-- 사용자 수정 일때 method: get(화면만 띄어줄것임) , action="<%=request.getContextPath()%>/userModify" 
+						<!-- 사용자 수정 일때 method: get(화면만 띄어줄것임) , action="${pageContext.request.contextPath}/userModify" 
 						사용자 삭제 : method : post (db에 변화가생김) action = /deleteUser 
 						파라미터는 둘다 userid 하나만 있으면 가능   -->
 						<button type="button" id="modifyBtn" class="btn btn-default">사용자수정</button>

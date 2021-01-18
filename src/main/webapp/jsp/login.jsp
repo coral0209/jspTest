@@ -19,7 +19,7 @@
 	<%@ include file="/common/common_lib.jsp" %>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <!-- Custom styles for this template -->
-    <link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
 
     
 
@@ -121,14 +121,14 @@
 
 <!-- 개인정보를 전송하므로 URL 에 노출되지 않도록 request body 영역에 파라미터를 전송 ==> method="post" -->
 
-      <form class="form-signin" id="frm" action="<%=request.getContextPath() %>/LoginController" method="post">
+      <form class="form-signin" id="frm" action="${pageContext.request.contextPath}/LoginController" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
 		<!-- user id : <input type="text" name="userid" value="sally"><br> -->
         <label for="userId" class="sr-only">Id</label>
         <!-- screen reader 가 시각장애인들을 위해서 인식해서 읽어줘야함.  -->
-        <input type="text" id="userid2" class="form-control" placeholder="id" name="userid" val="테스트"  required autofocus>
+        <input type="text" id="userid2" value="brown" class="form-control" placeholder="id" name="userid" val="테스트"  required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="pass" class="form-control" placeholder="Password" value="pass" required>
+        <input type="password" id="inputPassword" value="brownPass" name="pass" class="form-control" placeholder="Password"  required>
         <div class="checkbox">
           <label>
             <input type="checkbox" id="rememberme" value="remember-me"> Remember me

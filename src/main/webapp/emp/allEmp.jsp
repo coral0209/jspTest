@@ -17,10 +17,10 @@
 <title>Jsp</title>
 
 <script src="/js/jquery/jquery-1.12.4.js"></script>
-<link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
-<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script><!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script><!-- Custom styles for this template -->
+<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 </head>
 <script>
 

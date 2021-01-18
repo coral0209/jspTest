@@ -12,14 +12,14 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- Bootstrap core CSS -->
-<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${pageContext.request.contextPath}/css/dashboard.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 <!-- 달력 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
@@ -69,7 +69,7 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 	
-			<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModify" method="post">
+			<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/userModify" method="post">
 				<input type="hidden" name="userid" value="<%=vo.getUserid()%>"/>
 				
 				<div class="form-group">
@@ -158,7 +158,7 @@
 									
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" action="<%=request.getContextPath()%>/userModify" method="POST" class="btn btn-default">사용자수정</button>
+						<button type="submit" action="${pageContext.request.contextPath}/userModify" method="POST" class="btn btn-default">사용자수정</button>
 					</div>
 				</div>
 			</form>

@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,14 +18,14 @@
 
 
 <script src="/js/jquery/jquery-1.12.4.js"></script>
-<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- Bootstrap core CSS -->
-<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${pageContext.request.contextPath}/css/dashboard.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 </head>
 
 <body>
@@ -53,22 +54,16 @@
 					<th>사용자 별명</th>
 					<th>등록일시</th>
 				</tr>
-			<%List<UserVo> pageList = (List<UserVo>)request.getAttribute("list");
-					 
-					for (int i = 0; i < pageList.size(); i++) {
-					//향상된 for 문도 가능 
-					%>
+					<c:forEach items="${list}" var="user">
 					<tr>
-						<td><%=pageList.get(i).getUserid()%></td>
-						<td><%=pageList.get(i).getUsernm()%></td>
-						<td><%=pageList.get(i).getAllias()%></td>
-						<td><%=pageList.get(i).getReg_dt_fmt() %></td>
+						<td>${user.userid}</td>
+						<td>${user.usernm}</td>
+						<td>${user.alias}</td>
+						<td>${user.getReg_dt_fmt()}</td>
 			
 					</tr>
 
-					<%
-					}
-					%>
+					</c:forEach>
 			</table>
 		</div>
 

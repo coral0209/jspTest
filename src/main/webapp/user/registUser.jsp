@@ -15,14 +15,14 @@
 
 <link rel="icon" href="../../favicon.ico">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- Bootstrap core CSS -->
-<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${pageContext.request.contextPath}/css/dashboard.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 <!-- 달력 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
@@ -113,7 +113,7 @@ function send(){
 		  var id = $('#userId').val();
 		  console.log(id)
 		  $.ajax({
-			url : '<%=request.getContextPath()%>/idcheck' , 
+			url : '${pageContext.request.contextPath}/idcheck' , 
 			type : 'post', 
 			data : { "id" : id},
 			success : function(data){
@@ -154,13 +154,13 @@ function send(){
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 	
-			<form class="form-horizontal" role="form" id="fm" action="<%=request.getContextPath()%>/registUser" method="post">
+			<form class="form-horizontal" role="form" id="fm" action="${pageContext.request.contextPath}/registUser" method="post">
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">id</label>
 					<div class="col-sm-10">
 					<%String userid = request.getParameter("userid"); %>
-					<%  userid = userid == null ? "" : userid;   %>
-						<input type="text" class="form-control" id="userId" name="userid" oninput ="checkId()" value="<%=userid %>"
+					
+						<input type="text" class="form-control" id="userId" name="userid" oninput ="checkId()" value="${param.userid}"
 						placeholder="아이디를 입력하세요">
 						<span id = "chkMsg"></span>
 					</div>
@@ -172,8 +172,8 @@ function send(){
 					<label for="userNm" class="col-sm-2 control-label">name</label>
 					<div class="col-sm-10">
 					<%String userNm = request.getParameter("userNm"); %>
-					<%  userNm = userNm == null ? "" : userNm;   %>
-					<input type="text" class="form-control" id="userNm" name="userNm" value="<%=userNm %>"
+					<%-- <%  userNm = userNm == null ? "" : userNm;   %> --%>
+					<input type="text" class="form-control" id="userNm" name="userNm" value="${param.userNm}"
 								placeholder="이름을 입력하세요">
 						
 						
@@ -183,8 +183,7 @@ function send(){
 					<label for="userNm" class="col-sm-2 control-label">alias</label>
 					<div class="col-sm-10">
 					<%String userAlias = request.getParameter("userAlias"); %>
-					<%  userAlias = userAlias == null ? "" : userAlias;   %>
-					<input type="text" class="form-control" id="useralias" name="userAlias" value="<%=userAlias %>"
+					<input type="text" class="form-control" id="useralias" name="userAlias" value="${param.userAlias}"
 								placeholder="별명을 입력하세요">
 						
 					</div>
@@ -193,8 +192,7 @@ function send(){
 					<label for="pass" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-10">
 					<%String pass = request.getParameter("pass"); %>
-					<%  pass = pass == null ? "" : pass;   %>
-					<input type="password" class="form-control" id="pass" name="pass"  value="<%=pass %>"
+					<input type="password" class="form-control" id="pass" name="pass"  value="${param.pass}"
 					placeholder="비밀번호를 입력하세요">						
 					</div>
 				</div>
@@ -203,10 +201,9 @@ function send(){
 					<label for="datepicker" class="col-sm-2 control-label">등록 날짜</label>
 					<div class="col-sm-10">
 					<%String reg_dt = request.getParameter("reg_dt"); %>
-					<%  reg_dt = reg_dt == null ? "" : reg_dt;   %>
 					<%-- <input type="text" class="form-control" id="reg_dt" name="reg_dt" value="<%=reg_dt%>"
 					placeholder="yyyy.mm.dd">	 --%>
-					<input type="text" class="form-control" name="reg_dt" value="<%=reg_dt%>" id="datepicker"/>				
+					<input type="text" class="form-control" name="reg_dt" value="${param.reg_dt}" id="datepicker"/>				
 					</div>
 				</div>
 
@@ -216,8 +213,7 @@ function send(){
 					<label for="userNm" class="col-sm-2 control-label">주소</label>
 					<div class="col-sm-8">
 					<%String addr1 = request.getParameter("addr1"); %>
-					<%  addr1 = addr1 == null ? "" : addr1;   %>
-					<input type="text" class="form-control" id="addr1" name="addr1" readonly value="<%=addr1%>"
+					<input type="text" class="form-control" id="addr1" name="addr1" readonly value="${param.addr1}"
 					placeholder="주소검색 버튼을 입력하세요" >		
 					</div>
 					<div class="col-sm-2">
@@ -230,8 +226,7 @@ function send(){
 					<label for="userNm" class="col-sm-2 control-label">상세주소</label>
 					<div class="col-sm-10">
 					<%String addr2 = request.getParameter("addr2"); %>
-					<%  addr2 = addr2 == null ? "" : addr2;   %>
-					<input type="text" class="form-control" id="addr2" name="addr2" value="<%=addr2%>" 
+					<input type="text" class="form-control" id="addr2" name="addr2" value="${param.addr2}" 
 					placeholder="상세주소">		
 						
 					</div>
@@ -241,8 +236,7 @@ function send(){
 					<label for="userNm" class="col-sm-2 control-label">zipcode</label>
 					<div class="col-sm-10">
 					<%String zipcode = request.getParameter("zipcode"); %>
-					<%  zipcode = zipcode == null ? "" : zipcode;   %>
-					<input type="text" class="form-control" id="zipcode" name="zipcode" readonly value="<%=zipcode%>"
+					<input type="text" class="form-control" id="zipcode" name="zipcode" readonly value="${param.zipcode}"
 					>	
 					</div>
 				</div>

@@ -22,8 +22,8 @@
     	 FROM  (SELECT * 
     			FROM emp 
     			order by empno ) a 
-    			WHERE ROWNUM &lt;= #{page} * #{pasesize} )
-	where rn between (#{page}-1)*#{pasesize} + 1 AND  #{page} * #{pasesize}		
+    			WHERE ROWNUM &lt;= #{page} * #{pagesize} )
+	where rn between (#{page}-1)*#{pagesize} + 1 AND  #{page} * #{pagesize}		
 	</select>
 
 

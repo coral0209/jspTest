@@ -7,10 +7,10 @@ public class PageVo {
 	
 
 	public PageVo() {}
-	public PageVo(int page, int pasesize) {
+	public PageVo(int page, int pagesize) {
 		super();
 		this.page = page;
-		this.pagesize = pasesize;
+		this.pagesize = pagesize;
 	}
 	public int getPage() {
 		return page;
@@ -18,15 +18,16 @@ public class PageVo {
 	public void setPage(int page) {
 		this.page = page;
 	}
-	public int getPasesize() {
+
+	public int getPagesize() {
 		return pagesize;
 	}
-	public void setPagesize(int pasesize) {
-		this.pagesize = pasesize;
+	public void setPagesize(int pagesize) {
+		this.pagesize = pagesize;
 	}
 	@Override
 	public String toString() {
-		return "PageVo [page=" + page + ", paseSize=" + pagesize + "]";
+		return "PageVo [page=" + page + ", pageSize=" + pagesize + "]";
 	}
 	
 }
