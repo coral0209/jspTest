@@ -20,14 +20,14 @@
 <!-- <script src="/js/jquery/jquery-1.12.4.js"></script> -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
+<link href="${cp}/css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- Bootstrap core CSS -->
-<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+<script src="${cp}/js/bootstrap.js"></script>
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/css/dashboard.css"
+<link href="${cp}/css/dashboard.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
+<link href="${cp}/css/blog.css" rel="stylesheet">
 
 <script>
 	//문서 로딩이 완료되고 나서 실행되는 영역 
@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<form id="frm" action="${pageContext.request.contextPath}/usercontroller"
+	<form id="frm" action="${cp}/usercontroller"
 		method="get">
 		<input type="hidden" id="userid" name="userid" value="">
 	</form>
@@ -104,7 +104,7 @@
 					<div class="text-center">
 						<ul class="pagination">
 							<li class="prev"><a
-								href="${pageContext.request.contextPath}/pagingUser?page=1&pagesize=${pageVo.pagesize}">«</a>
+								href="${cp}/pagingUser?page=1&pagesize=${pageVo.pagesize}">«</a>
 							</li>
 							<c:forEach begin="1" end="${pagination}" var="i">
 								<c:choose>
@@ -113,12 +113,12 @@
 									</c:when>
 										<c:otherwise>
 											<li><a
-											href="${pageContext.request.contextPath}/pagingUser?page=${i}&pagesize=${pageVo.pagesize}">${i}</a></li>
+											href="${cp}/pagingUser?page=${i}&pagesize=${pageVo.pagesize}">${i}</a></li>
 										</c:otherwise>
 								</c:choose>
 							</c:forEach>
 							<li class="next"><a
-								href="${pageContext.request.contextPath}/pagingUser?page=${pagination}&pagesize=${pageVo.pagesize}">»</a>
+								href="${cp}/pagingUser?page=${pagination}&pagesize=${pageVo.pagesize}">»</a>
 							</li>
 						</ul>
 					</div>

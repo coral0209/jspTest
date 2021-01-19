@@ -15,14 +15,14 @@
 
 <link rel="icon" href="../../favicon.ico">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
+<link href="${cp}/css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- Bootstrap core CSS -->
-<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+<script src="${cp}/js/bootstrap.js"></script>
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/css/dashboard.css"
+<link href="${cp}/css/dashboard.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
+<link href="${cp}/css/blog.css" rel="stylesheet">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 <!-- 달력 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
@@ -113,7 +113,7 @@ function send(){
 		  var id = $('#userId').val();
 		  console.log(id)
 		  $.ajax({
-			url : '${pageContext.request.contextPath}/idcheck' , 
+			url : '${cp}/idcheck' , 
 			type : 'post', 
 			data : { "id" : id},
 			success : function(data){
@@ -154,7 +154,7 @@ function send(){
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 	
-			<form class="form-horizontal" role="form" id="fm" action="${pageContext.request.contextPath}/registUser" method="post">
+			<form class="form-horizontal" role="form" id="fm" action="${cp}/registUser" method="post">
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">id</label>
 					<div class="col-sm-10">

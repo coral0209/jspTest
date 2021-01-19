@@ -115,6 +115,18 @@
   	<location>/error/type/runError.jsp</location>
   </error-page>
   
+  
+  <listener>
+  	<listener-class>kr.or.ddit.listener.ApplicationListner</listener-class>
+  </listener>
+  
+  <listener>
+  <listener-class>kr.or.ddit.listener.LoginUserListener</listener-class>
+  </listener>
+  
+  
+  
+  
   <resource-ref>
    <description>DB Connection</description>
    <res-ref-name>jdbc/oracleDB</res-ref-name>

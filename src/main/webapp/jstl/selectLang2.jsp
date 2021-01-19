@@ -14,7 +14,7 @@ $(function(){
 	$('#select').on('change' , function(){
 		$('#sl').submit(); 
 	})
-	$('select').val("${param.sl}");
+	$('#select').val("${en}");
 	
 	
 })
@@ -31,7 +31,7 @@ $(function(){
 <body>
 그냥 ${sl} 하면 속성 . 
 param : [${param.sl}]
-<form id="sl"name="frm" action="${pageContext.request.contextPath} /jstl/selectLang2.jsp">
+<form id="sl"name="frm" action="${cp} /jstl/selectLang2.jsp">
 <select  name="sl"  onchange="sm()" id="select">
 	<option value="ko" >한국어</option>
 	<option value="en" >ENGLISH</option>

@@ -19,7 +19,7 @@
 	<%@ include file="/common/common_lib.jsp" %>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
+    <link href="${cp}/css/signin.css" rel="stylesheet">
 
     
 
@@ -118,10 +118,10 @@
 
     <div class="container">
 	UNT_CD : ${param.UNT_CD} / <%=request.getParameter("UNT_CD") %>
-
+	cp : ${cp } / <%=request.getAttribute("cp") %>
 <!-- 개인정보를 전송하므로 URL 에 노출되지 않도록 request body 영역에 파라미터를 전송 ==> method="post" -->
 
-      <form class="form-signin" id="frm" action="${pageContext.request.contextPath}/LoginController" method="post">
+      <form class="form-signin" id="frm" action="${cp}/LoginController" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
 		<!-- user id : <input type="text" name="userid" value="sally"><br> -->
         <label for="userId" class="sr-only">Id</label>

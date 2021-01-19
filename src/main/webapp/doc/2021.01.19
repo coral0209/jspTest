@@ -95,3 +95,26 @@ getParameterNames()
  session 최초 요청할때만 만들어짐. -> 시간이 지나면 소멸 invaligate 메소드 콜할때 
  
  
+ 이벤트 리스너 
+ 이벤트 종류 
+ 1. life cycle 
+ 	1) request : ServletRequestListener 
+ 	2) session : HttpSessionListener
+ 	3) application : ServletContextListener  
+ 	
+: application 이 켜질때 
+
+${pageContext,request.contextPath} ==> ${cp}
+application scope 에 cp 라는 속성으로 contextPath 값을 저장한다. 
+
+리스너 생성( 알맞은 인터페이스 구현한 클래스 생성) 
+리스너 등록 ( web.xml ) 
+
+pageContext.request.contextPath -> 
+
+2. attribute 
+	사용자가 로그인을 할 경우 : S_USER 속성을 session 에 추가 
+	Map객체 <String , UserVo>  
+	Set<String>로 로그인한 사용자 아이디를 관리 
+	
+	

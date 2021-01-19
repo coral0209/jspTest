@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 	<ul class="nav nav-sidebar">
 		<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
-		<li class="active"><a href="${pageContext.request.contextPath}/allUser">전체사용자</a></li>
-		<li class="active"><a href="${pageContext.request.contextPath}/allEmp">전체직원</a></li>
-		<%-- <li class="active"><a href="${pageContext.request.contextPath}/pagingUser?page=1&pagesize=5">사용자 페이징 리스트</a></li> --%>
-		<li class="active"><a href="${pageContext.request.contextPath}/pagingUser">사용자 페이징 리스트</a></li>
+		<li class="active"><a href="${cp}/allUser">전체사용자</a></li>
+		<li class="active"><a href="${cp}/allEmp">전체직원</a></li>
+		<%-- <li class="active"><a href="${cp}/pagingUser?page=1&pagesize=5">사용자 페이징 리스트</a></li> --%>
+		<li class="active"><a href="${cp}/pagingUser">사용자 페이징 리스트</a></li>
 		
 		<%--
 			localhost/pagingUser?page=1&pageSize=5 로 요청시

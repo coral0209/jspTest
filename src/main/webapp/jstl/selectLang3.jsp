@@ -22,7 +22,7 @@ function sm() {
 <body>
 그냥 ${sl} 하면 속성 . 
 param : [${param.sl}]
-<form name="frm" action="${pageContext.request.contextPath} /jstl/selectLang2.jsp" method="get">
+<form name="frm" action="${cp} /jstl/selectLang2.jsp" method="get">
 <select  name="sl"  onchange="sm()" id="select">
 	<option value="ko" <c:if test="${param.sl == 'ko' }"> selected </c:if>>한국어</option>
 	<option value="en" <c:if test="${param.sl == 'en' }"> selected </c:if>>ENGLISH</option>
