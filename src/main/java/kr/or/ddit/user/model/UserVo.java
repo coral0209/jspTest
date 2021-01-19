@@ -36,14 +36,12 @@ public class UserVo {
 	public void setReg_dt(Date reg_dt) {
 		this.reg_dt = reg_dt;
 	}
-	public String getReg_dt_fmt() {
-		if(this.reg_dt == null) {
-			return ""; 
-		}
-		else {
-	
-			return  new SimpleDateFormat("yyyy.MM.dd").format(this.reg_dt); 	
-		}
+	/*
+	 * public String getReg_dt_fmt() { if(this.reg_dt == null) { return ""; } else {
+	 * 
+	 * return new SimpleDateFormat("yyyy.MM.dd").format(this.reg_dt); }
+	}
+	 */
 		
 		
 		//	SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd"); 
@@ -51,7 +49,7 @@ public class UserVo {
 		//reg_dt 필드가 null 이면 "" 문자열 반환 
 		//reg_dt 필드가 null 이 아니면 SimpleDateFormat 을 
 		//생성하여 yyyy.MM.dd 포맷의 문자열로 반환하여 리턴 
-	}
+	
 
 	public String getUserid() {
 		return userid;

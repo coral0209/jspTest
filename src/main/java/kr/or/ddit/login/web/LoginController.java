@@ -88,16 +88,16 @@ public class LoginController extends HttpServlet {
 		
 		UserVo user = userService.selectUser(userid); 
 
-		
+		logger.debug("uservo 확인 session 확인");
 		
 		//로그인 성공 (forward 는 같은 곳에서 실행되서 contextPath() 를 붙일 필요가 없다. )
 		
 		
 		
 		if( user != null && pass.equals(user.getPass())) {
-			req.getRequestDispatcher("/jsp/main.jsp").forward(req, resp);
 			HttpSession session = req.getSession(); 
 			session.setAttribute("S_USER", user);
+			req.getRequestDispatcher("/jsp/main.jsp").forward(req, resp);
 		}
 		//로그인 실패 
 		else {

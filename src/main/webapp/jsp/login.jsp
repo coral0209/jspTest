@@ -117,7 +117,7 @@
   <body>
 
     <div class="container">
-
+	UNT_CD : ${param.UNT_CD} / <%=request.getParameter("UNT_CD") %>
 
 <!-- 개인정보를 전송하므로 URL 에 노출되지 않도록 request body 영역에 파라미터를 전송 ==> method="post" -->
 

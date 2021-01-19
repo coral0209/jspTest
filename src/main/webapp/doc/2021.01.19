@@ -1,0 +1,97 @@
+1. 세션 체크filter  : SessionCheckFilter
+로그인을 하지 않은 사용자는 시스템 내부 메뉴를 사용하지 못하도록 제어 
+현상황 : localhost/allUser url 로 직접 접속하면 로그인하지 않아도 사용자 리스트를 볼 수 있음 
+개선 : 서블릿으로 요청이 전달되기 전에 filter에서 세션이 있는지(S_USER) 체크하여 
+세션정보가 있을 경우만 서블릿으로 요청 전달 
+**모든 URL 이 아닌 특정 URL 에 대해서만 체크가 되도록 해야함 
+localhost/login.jsp 
+
+/* 모든 것은 되는데 
+/allUser만 제외 같이 anti-pattern이 지금은 제공이 안됨 
+
+
+
+
+/*
+request.getRequestURI(); 
+
+
+
+세션 정보가 없을 경우 로그인 화면으로 이동 
+
+요쳥에 parameter 를 못넣는데. -> Filter 에서 요청에 없던 파라미터를 추가한다. 
+wrapper 구현 
+requestWrapper 
+
+
+request 와 관련된 parameter 4개가 있다. 
+getParameter
+getParameterValues 
+getParameterMap() -> put 을 하면 됮 않을까? 
+getParameterNames() 
+
+
+
+
+   
+   
+ 목적 : 필터를 이용하여 임의의 파라미터 추가하기 
+   
+ request 객체에 생성되어 있는 parrameterMap 은 수정이 불가능한 Map 
+
+   <%
+   	Map<String , String[]> paramMap = request.getParameterMap();
+   	System.out.println("userid : " + paramMap.get("userid"));
+   	
+   	paramMap.put("usernm", new String[]{"브라운"}); 
+   	// -> locked PatameterMap 이라서 변경이 안된다. 
+   %>
+
+ 
+ 즉 임의로 파라미터를 추가하는 작업은 불가능  -> 재정의해서 변경하자 
+ 
+ Filter 를 이용하여 요청을servlet 으로 전달하기 전에 
+ 서버가 생성한 request 객체를 이용하여 새로운 request 객체를 생성
+ ==> requestWrapper  
+ 
+ 기존 원본 parameter 를 복사하여 수정 가능한 Map 에 복사 
+ request 객체가 원본 파라미터 맵이 아닌, 우리가ㅣ 만든 map 객체를 사용할 수 있도록 parameter 관련 메소드를 4개 재정의 
+ 
+ wrapper ==> HttpServletRequestWrapper 클래스 상속 하는 클래스 생성하기 
+ 
+ 부모클래스에는 생성자가 없어서 생성자 생성해줌 
+ 
+ 
+ 
+ Resource Bundle : 국제화 서비스를 위한 번역 파일 
+ 파일의 이름 : 리소스 번들 이름_언어코드_국가코드.properties 
+	 msg_ko.propertis
+	 msg_en.properties 
+	 msg_ja 
+	지원하지 않는 언어, 국가코드에 대해서 기본적으로 적용되는 파일
+	 msg.properties 	 
+ 
+ 파일 작성 msg_ko.properties (확장자 글자틀리면안됨) 
+ 
+ 코드 = 메세지 
+ 
+ jsp 에는 코드 부분을 기술하면 국제화 처리에 의해 사용자가 요청한 언어의 메시지로 치환된다. 
+ 
+ 사용자가 설정한 값으로 치환이 된다. 
+ 
+ 
+ selectLang.jsp 요청을 보내는 두가지 경로가 존재 
+ 1. 웹브라우저 주소줄에 localhostl.jstl/selectLang.jsp? lang=en 를 입력(파라미터가 없음) 
+ 2. selectLang,jsp 안에 있는 select box 의 값이 변경되었을 떄 . 
+ 
+ 이벤트 : 
+ 웹 어플리케이션 이벤트 처리 (Listener) 
+ 
+ 웹 컨테이너에서 발생하는 이벤트를 감지, 처리를 구현 
+ life cycle , attribute 
+ 
+ application 서버가 켤때 끌떄 생성. -> 서버단위로 초기화할때 사용한다. 
+ 
+ session 최초 요청할때만 만들어짐. -> 시간이 지나면 소멸 invaligate 메소드 콜할때 
+ 
+ 

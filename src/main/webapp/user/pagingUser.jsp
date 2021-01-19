@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,10 +87,11 @@
 							
 							<c:forEach items="${list}" var="userList">
 							<tr class="user" data-userid="${userList.userid}">
+							<fmt:formatDate var="regdt" value="${userList.reg_dt}" pattern="yyyy.MM.dd"/>
 								<td>${userList.userid}</td>
 								<td>${userList.usernm}</td>
 								<td>${userList.allias}</td>
-								<td>${userList.getReg_dt_fmt()}</td>
+								<td>${regdt}</td>
 
 							</tr>
 
