@@ -29,7 +29,7 @@
 	
 
 	<%
-		if(((String)pageContext.getAttribute("userdi")).equals("brown")){
+		if(((String)pageContext.getAttribute("userid")).equals("brown")){
 			out.write(pageContext.getAttribute("userid"))); 
 		}  
 	%>

@@ -12,6 +12,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,6 +87,8 @@ public class LoginController extends HttpServlet {
 		// session 에 데이터베이스에서 조회한 사용자 정보(userVo) 를 저장 
 		
 		UserVo user = userService.selectUser(userid); 
+
+		
 		
 		//로그인 성공 (forward 는 같은 곳에서 실행되서 contextPath() 를 붙일 필요가 없다. )
 		
@@ -93,6 +96,8 @@ public class LoginController extends HttpServlet {
 		
 		if( user != null && pass.equals(user.getPass())) {
 			req.getRequestDispatcher("/jsp/main.jsp").forward(req, resp);
+			HttpSession session = req.getSession(); 
+			session.setAttribute("S_USER", user);
 		}
 		//로그인 실패 
 		else {
