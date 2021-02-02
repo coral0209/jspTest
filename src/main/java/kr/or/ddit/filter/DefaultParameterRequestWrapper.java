@@ -25,7 +25,7 @@ public class DefaultParameterRequestWrapper extends HttpServletRequestWrapper {
 		
 		
 		
-	}
+	};
 
 	@Override
 	public String getParameter(String name) {

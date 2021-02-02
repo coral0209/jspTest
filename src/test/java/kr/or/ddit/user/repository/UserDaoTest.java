@@ -86,11 +86,11 @@ public class UserDaoTest {
 		//신규 입력 테스트를 위해 테스트 과정에서 입력된 데이터를 삭제 
 		
 		//userid, usernm , pass , reg_dt , alias , addr1 , addr2 , zipcode 
-		UserVo userVo = new UserVo( "ddit" , "오로라" , "aurora" , new Date() , "사파이어" , "판교동 판교로 판교서" , "아이슬란드 눈밭" , "394-423" ); 
+		UserVo userVo = new UserVo( "ddit" , "오로라" , "aurora" , new Date() , "사파이어" , "판교동 판교로 판교서" , "아이슬란드 눈밭" , "394-423" , "" , "" ); 
 
 		/***When***/
 
-		int updateCnt = userDao.modifyUser(userVo);
+		int updateCnt = userDao.insertUser(userVo);
 		
 		/***Then***/
 
@@ -127,7 +127,7 @@ public class UserDaoTest {
 	public void setUp() {
 		userDao = new UserDao(); 
 		userDao.deleteUser("ddit"); 
-		UserVo userVo = new UserVo("testUser" , "테스트 사용자" , "testUserPass" , new Date(), "대덕" , "대전 중구 중앙로 76"  , "4층" , "2323"); 
+		UserVo userVo = new UserVo("testUser" , "테스트 사용자" , "testUserPass" , new Date(), "대덕" , "대전 중구 중앙로 76"  , "4층" , "2323" , "" , ""); 
 		
 		userDao.insertUser(userVo); 
 

@@ -4,19 +4,29 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.user.service.UserService;
 import kr.or.ddit.user.service.UserServiceI;
+import kr.or.ddit.util.FileUtil;
 
+@MultipartConfig
 @WebServlet("/registUser")
 public class RegistUser extends HttpServlet {
+	private static final Logger logger = LoggerFactory.getLogger(RegistUser.class);
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -51,8 +61,29 @@ public class RegistUser extends HttpServlet {
 			String addr1 = req.getParameter("addr1");
 			String addr2 = req.getParameter("addr2");
 			String zipcode = req.getParameter("zipcode");
+			
+			//사용자가 profile 을 업로드 한 경우 
+			// 전송한 파일 이름 (filename)
+			// 서버에 저장할 파일 이름 (realfilename)
+			// 서버에 지정된 공간에 저장 
+			//사진 전송한지 아닌지 알아보기
+			Part profile = req.getPart("profile"); 
+			String filename = "";
+			String realfilename = "";
+			
+			if(profile.getSize() > 0 ) {
+				filename = FileUtil.getFileName(profile.getHeader("Content-Disposition"));
+				String fileExtension = FileUtil.getFileExtension(filename);
+				realfilename = UUID.randomUUID().toString() + fileExtension;
+				logger.debug("realfilename {} " , realfilename);
+				profile.write("d:\\upload\\" + realfilename);
+			}
+			
+			
+			
 
-			UserVo uservo = new UserVo(userid, usernm, pass, reg_dt, userAlias, addr1, addr2, zipcode);
+			UserVo uservo = new UserVo(userid, usernm, pass, reg_dt, userAlias, addr1, addr2, zipcode , filename , realfilename );
+			
 			int cnt = 0;
 			try {
 				cnt = service.insertUser(uservo);

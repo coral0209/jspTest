@@ -154,15 +154,14 @@ function send(){
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 	
-			<form class="form-horizontal" role="form" id="fm" action="${cp}/registUser" method="post">
+			<form class="form-horizontal" role="form" id="fm" action="${cp}/registUser" method="post" enctype="multipart/form-data">
 				<div class="form-group">
-					<label for="userNm" class="col-sm-2 control-label">id</label>
+					<label for="userId" class="col-sm-2 control-label">id</label>
 					<div class="col-sm-10">
-					<%String userid = request.getParameter("userid"); %>
-					
-						<input type="text" class="form-control" id="userId" name="userid" oninput ="checkId()" value="${param.userid}"
+						<input type="text" class="form-control" id="userId" name="userid" oninput ="checkId()" value="kr"<%-- "${param.userid}" --%>
 						placeholder="아이디를 입력하세요">
 						<span id = "chkMsg"></span>
+					<input type="file" class="form-control" name="profile" />
 					</div>
 				</div>
 
@@ -171,9 +170,8 @@ function send(){
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">name</label>
 					<div class="col-sm-10">
-					<%String userNm = request.getParameter("userNm"); %>
 					<%-- <%  userNm = userNm == null ? "" : userNm;   %> --%>
-					<input type="text" class="form-control" id="userNm" name="userNm" value="${param.userNm}"
+					<input type="text" class="form-control" id="userNm" name="userNm" value="네임" <%-- "${param.userNm}" --%>
 								placeholder="이름을 입력하세요">
 						
 						
@@ -182,8 +180,7 @@ function send(){
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">alias</label>
 					<div class="col-sm-10">
-					<%String userAlias = request.getParameter("userAlias"); %>
-					<input type="text" class="form-control" id="useralias" name="userAlias" value="${param.userAlias}"
+					<input type="text" class="form-control" id="useralias" name="userAlias" value="알리아스"<%-- "${param.userAlias}" --%>
 								placeholder="별명을 입력하세요">
 						
 					</div>
@@ -191,8 +188,7 @@ function send(){
 				<div class="form-group">
 					<label for="pass" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-10">
-					<%String pass = request.getParameter("pass"); %>
-					<input type="password" class="form-control" id="pass" name="pass"  value="${param.pass}"
+					<input type="password" class="form-control" id="pass" name="pass"  value="pass"<%-- "${param.pass}" --%>
 					placeholder="비밀번호를 입력하세요">						
 					</div>
 				</div>
@@ -200,7 +196,6 @@ function send(){
 								<div class="form-group">
 					<label for="datepicker" class="col-sm-2 control-label">등록 날짜</label>
 					<div class="col-sm-10">
-					<%String reg_dt = request.getParameter("reg_dt"); %>
 					<%-- <input type="text" class="form-control" id="reg_dt" name="reg_dt" value="<%=reg_dt%>"
 					placeholder="yyyy.mm.dd">	 --%>
 					<input type="text" class="form-control" name="reg_dt" value="${param.reg_dt}" id="datepicker"/>				
@@ -212,8 +207,7 @@ function send(){
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">주소</label>
 					<div class="col-sm-8">
-					<%String addr1 = request.getParameter("addr1"); %>
-					<input type="text" class="form-control" id="addr1" name="addr1" readonly value="${param.addr1}"
+					<input type="text" class="form-control" id="addr1" name="addr1" readonly value="주소1"<%-- "${param.addr1}" --%>
 					placeholder="주소검색 버튼을 입력하세요" >		
 					</div>
 					<div class="col-sm-2">
@@ -226,7 +220,7 @@ function send(){
 					<label for="userNm" class="col-sm-2 control-label">상세주소</label>
 					<div class="col-sm-10">
 					<%String addr2 = request.getParameter("addr2"); %>
-					<input type="text" class="form-control" id="addr2" name="addr2" value="${param.addr2}" 
+					<input type="text" class="form-control" id="addr2" name="addr2" value="주소2"<%-- "${param.addr2}" --%> 
 					placeholder="상세주소">		
 						
 					</div>
@@ -236,7 +230,7 @@ function send(){
 					<label for="userNm" class="col-sm-2 control-label">zipcode</label>
 					<div class="col-sm-10">
 					<%String zipcode = request.getParameter("zipcode"); %>
-					<input type="text" class="form-control" id="zipcode" name="zipcode" readonly value="${param.zipcode}"
+					<input type="text" class="form-control" id="zipcode" name="zipcode" readonly value="집코드"<%-- "${param.zipcode}" --%>
 					>	
 					</div>
 				</div>

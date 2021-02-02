@@ -22,7 +22,7 @@ public class UserServiceTest {
 	@Before
 	public void setup() {
 		userService = new UserService();
-		UserVo userVo = new UserVo("testUser" , "테스트 사용자" , "testUserPass" , new Date(), "대덕" , "대전 중구 중앙로 76"  , "4층" , "2323"); 
+		UserVo userVo = new UserVo("testUser" , "테스트 사용자" , "testUserPass" , new Date(), "대덕" , "대전 중구 중앙로 76"  , "4층" , "2323" , "" , ""); 
 		userService.insertUser(userVo); 
 		userService.deleteUser("ddit"); 
 	}
@@ -101,7 +101,7 @@ public class UserServiceTest {
 	public void modifyUserTest() {
 		/***Given***/
 
-		UserVo userVo = new UserVo( "ddit" , "오로라" , "aurora" , new Date() , "사파이어" , "판교동 판교로 판교서" , "아이슬란드 눈밭" , "394-423" ); 
+		UserVo userVo = new UserVo( "ddit" , "오로라" , "aurora" , new Date() , "사파이어" , "판교동 판교로 판교서" , "아이슬란드 눈밭" , "394-423" , "" , "" ); 
 
 		
 		/***When***/

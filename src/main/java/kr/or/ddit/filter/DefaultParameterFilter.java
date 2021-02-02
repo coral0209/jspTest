@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 
-//@WebFilter("/*")
+@WebFilter("/*")
 public class DefaultParameterFilter implements Filter{
 
 	@Override
@@ -34,7 +34,7 @@ public class DefaultParameterFilter implements Filter{
 				new DefaultParameterRequestWrapper((HttpServletRequest)request); 
 		chain.doFilter(wrapper, response);
 		
-	}
+	};
 
 	@Override
 	public void destroy() {

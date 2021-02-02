@@ -55,7 +55,7 @@
   </servlet-mapping>
   
   
-<!--    <filter>
+   <filter>
   	<filter-name>requestContentTypeFilter</filter-name>
   	<filter-class>kr.or.ddit.filter.RequestContentTypeFilter</filter-class>
   </filter>
@@ -75,17 +75,17 @@
   <filter-name>requestCounterFilter</filter-name>
   <url-pattern>/*</url-pattern>
   </filter-mapping> 
- <filter>
+<!--  <filter>
   	<filter-name>sessionCheckFilter</filter-name>
   	<filter-class>kr.or.ddit.filter.SessionCheckFilter</filter-class>
   
-  </filter>
+  </filter> 
   
   <filter-mapping>
   	<filter-name>sessionCheckFilter</filter-name>
   	<url-pattern>/*</url-pattern>
-  </filter-mapping> 
-	  -->
+  </filter-mapping>  -->
+	 
 	 
   
   <!-- error page 설정 -->

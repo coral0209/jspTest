@@ -20,7 +20,7 @@ public class UserVo {
 	//대다수의 framework 는 기본 생성자를 필요로 한다. 
 	public UserVo(){}
 	public UserVo(String userid, String usernm, String pass, Date reg_dt, String alias, String addr1,
-		   String addr2, String zipcode ) {
+		   String addr2, String zipcode , String filename , String realfilename ) {
 		   this.userid = userid;
 		   this.usernm = usernm ; 
 		   this.pass = pass; 
@@ -29,6 +29,8 @@ public class UserVo {
 		   this.addr1 = addr1 ; 
 		   this.addr2 = addr2; 
 		   this.zipcode = zipcode; 
+		   this.filename = filename;
+		   this.realfilename = realfilename; 
 	}
 	public Date getReg_dt() {
 		return reg_dt;
@@ -85,31 +87,31 @@ public class UserVo {
 		this.alias = alias;
 	}
 	public String getAddr1() {
-		return addr1 == null ? "" : addr1;
+		return addr1;
 	}
 	public void setAddr1(String addr1) {
 		this.addr1 = addr1;
 	}
 	public String getAddr2() {
-		return addr2 == null ? "" : addr2;
+		return addr2;
 	}
 	public void setAddr2(String addr2) {
 		this.addr2 = addr2;
 	}
 	public String getZipcode() {
-		return zipcode == null ? "" : zipcode;
+		return zipcode ;
 	}
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
 	public String getFilename() {
-		return filename == null ? "" : filename;
+		return filename ;
 	}
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
 	public String getRealfilename() {
-		return realfilename == null ? "" : realfilename;
+		return realfilename;
 	}
 	public void setRealfilename(String realfilename) {
 		this.realfilename = realfilename;

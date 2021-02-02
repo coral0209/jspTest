@@ -16,7 +16,7 @@ public class EmpService implements EmpServiceI {
 	@Override
 	public List<EmpVo> selectAllUser() {
 		return dao.selectAllUser();
-	}
+	};
 
 	//한명의 회원직원
 	@Override

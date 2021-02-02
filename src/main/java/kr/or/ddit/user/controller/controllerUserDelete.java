@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import kr.or.ddit.user.service.UserService;
 import kr.or.ddit.user.service.UserServiceI;
 
-@WebServlet("/deleteUser")
+@WebServlet("/delete")
 public class controllerUserDelete extends HttpServlet {
 	private static final Logger logger = LoggerFactory.getLogger(controllerUserDelete.class);
 	private UserServiceI userService = new UserService(); 

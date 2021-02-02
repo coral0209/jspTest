@@ -4,17 +4,21 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.user.service.UserService;
 import kr.or.ddit.user.service.UserServiceI;
-
+import kr.or.ddit.util.FileUtil;
+@MultipartConfig
 @WebServlet("/userModify")
 public class UserModify extends HttpServlet {
 	@Override
@@ -53,8 +57,27 @@ public class UserModify extends HttpServlet {
 		String addr2 = req.getParameter("addr2");
 		String zipcode = req.getParameter("zipcode");
 		
+		Part profile = req.getPart("profile");
+		String filename = "";
+		String realfilename = "";
+		
+		if(profile != null && profile.getSize() > 0 ) {
+			filename = FileUtil.getFileName(profile.getHeader("Content-Disposition"));
+			String fileExtension = FileUtil.getFileExtension(filename);
+			realfilename = UUID.randomUUID().toString() + fileExtension;
+			
+			/* profile.write("d:\\upload\\" + realfilename); */
+			
+		}else {
+	
+			filename = req.getParameter("filename");
+			realfilename = req.getParameter("realfilename");
+			
+		}
+	
+		
 		UserVo usevo = new UserVo(userid , usernm , pass , reg_dt , userAlias , addr1, addr2,
-				zipcode);
+				zipcode , filename , realfilename);
 		UserService service = new UserService(); 
 		 int cnt  = service.modifyUser(usevo); 
 		if (cnt == 1) {

@@ -31,6 +31,15 @@ public class LoginController extends HttpServlet {
 	
 	private UserServiceI userService = new UserService(); 
 	
+	//웹브라우저 : localhpost/login.jsp ==> model1 . 
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/login.jsp").forward(req, resp);
+	
+	
+	}
+	
+	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub

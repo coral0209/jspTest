@@ -29,9 +29,12 @@ public class LoginUserListener implements HttpSessionAttributeListener{
 
 	@Override
 	public void attributeRemoved(HttpSessionBindingEvent event) {
+		
+		if(event.getName().equals("S_USER")) {
 		UserVo user = (UserVo)event.getValue(); 
 		logger.debug("removed user  : {}" , user.getUsernm());
 		users.remove(user.getUsernm());
+		};
 		
 	}
 

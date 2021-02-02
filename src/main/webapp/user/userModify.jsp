@@ -53,7 +53,7 @@
 
 <body>
 
-<% UserVo vo = (UserVo) request.getAttribute("userVo");%>
+
 	
 	
 	<%--헤더부분 --%>
@@ -69,14 +69,25 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 	
-			<form class="form-horizontal" role="form" action="${cp}/userModify" method="post">
-				<input type="hidden" name="userid" value="<%=vo.getUserid()%>"/>
+			<form class="form-horizontal" role="form" action="${cp}/userModify" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="userid" value="${userVo.userid}"/>
 				
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">id</label>
 					<div class="col-sm-10">
-						<label class="control-label"><%=vo.getUserid() %></label>
-						<input type= hidden value="<%=vo.getUserid() %>" name="userid">
+						<label class="control-label">${userVo.userid}</label>
+						<input type= hidden value="${userVo.userid}" name="userid">
+					</div>
+				</div>
+				
+						<div class="form-group">
+					<label for="userNm" class="col-sm-2 control-label">사용자사진</label>
+					<div class="col-sm-10">
+						<img src="${cp}/profile/${userVo.userid}.png" >
+						<img src="/profile?userid="${userVo.userid}" >
+						<input type= hidden value="${userVo.realfilename}" name="realfilename">
+						<input type= hidden value="${userVo.filename}" name="filename">
+						<input type="file" class="form-control" id="profile" name="profile"/>
 					</div>
 				</div>
 
@@ -86,7 +97,7 @@
 					<label for="userNm" class="col-sm-2 control-label">name</label>
 					<div class="col-sm-10">
 					<input type="text" class="form-control" id="userNm" name="userNm"
-								value="<%=vo.getUsernm() %>" >
+								value="${userVo.usernm}" >
 						
 						
 					</div>
@@ -95,7 +106,7 @@
 					<label for="userNm" class="col-sm-2 control-label">alias</label>
 					<div class="col-sm-10">
 					<input type="text" class="form-control" id="useralias" name="userAlias"
-								value="<%=vo.getAllias() %>">
+								value="${userVo.alias}">
 						
 					</div>
 				</div>
@@ -103,7 +114,7 @@
 					<label for="pass" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-10">
 					<input type="password" class="form-control" id="pass" name="pass"
-					placeholder="Password">						
+					placeholder="Password" value="${userVo.pass}" >						
 					</div>
 				</div>
 				
@@ -130,7 +141,7 @@
 					<label for="userNm" class="col-sm-2 control-label">addr1</label>
 					<div class="col-sm-8">
 					<input type="text" class="form-control" id="addr1" name="addr1" readonly
-					value="<%=vo.getAddr1() %>">		
+					value="${userVo.addr1}">		
 					</div>
 					<div class="col-sm-2">
 					<button type="button" id="addrBtn" class="btn btn-default">주소검색</button>				
@@ -141,7 +152,7 @@
 					<label for="userNm" class="col-sm-2 control-label">addr2</label>
 					<div class="col-sm-10">
 					<input type="text" class="form-control" id="addr2" name="addr2"
-					value="상세주소">		
+					value="${userVo.addr2}">		
 						
 					</div>
 				</div>
@@ -150,7 +161,7 @@
 					<label for="userNm" class="col-sm-2 control-label">zipcode</label>
 					<div class="col-sm-10">
 					<input type="text" class="form-control" id="zipcode" name="zipcode" readonly
-					value="<%=vo.getZipcode() %>">	
+					value="${userVo.zipcode}">	
 					</div>
 				</div>
 			

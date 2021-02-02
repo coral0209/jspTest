@@ -16,7 +16,6 @@
 	BasicDataSource bs = (BasicDataSource)application.getAttribute("bs"); 
 	
 	
-	
 	/* //시작 */
 	long startTime = System.currentTimeMillis(); 
 	
